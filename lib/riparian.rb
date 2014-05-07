@@ -20,9 +20,3 @@ module Riparian
     }
   end
 end
-
-session = Riparian::Session.new
-session.connect
-
-puts session.call 'differential.getrevision', revision_id: '1337'
-
