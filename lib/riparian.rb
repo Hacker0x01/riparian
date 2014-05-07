@@ -21,33 +21,8 @@ module Riparian
   end
 end
 
-class Riparian::Test
-  def self.connect!
-    certificate = Riparian::Config.credentials['cert']
-    auth_token  = Time.now.to_i
-
-    data = {
-      'authToken'     => auth_token,
-      'authSignature' => hash(auth_token, certificate),
-      'user'          => Riparian::Config.credentials['user']
-    }
-
-    session = Riparian::Session.new
-
-    response = session.call 'conduit.connect', data
-
-    Riparian::Session.new response['connectionID'],
-      response['sessionKey']
-  end
-
-  private
-
-  def self.hash(auth_token, certificate)
-    Digest::SHA1.hexdigest "#{auth_token}#{certificate}"
-  end
-end
-
-session = Riparian::Test.connect!
+session = Riparian::Session.new
+session.connect
 
 puts session.call 'differential.getrevision', revision_id: '1337'
 
