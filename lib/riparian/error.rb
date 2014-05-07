@@ -1,2 +1,4 @@
-class Riparian::Error < Exception
+module Riparian
+  class Error < Exception
+  end
 end
