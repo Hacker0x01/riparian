@@ -1,4 +1,4 @@
-class Conduit::Request
+class Riparian::Request
   def initialize(session, method, data)
     @session = session
 
@@ -17,22 +17,22 @@ class Conduit::Request
 
   def call(method, data)
     request = Net::HTTP::Post.new route(method),
-      Conduit.http_headers
+      Riparian.http_headers
 
     request.set_form_data body(data)
 
     response = connection.request(request).body
 
-    Conduit::Response.new response
+    Riparian::Response.new response
   end
 
   def route(method)
-    "#{Conduit::Config.conduit_uri.path}#{method}"
+    "#{Riparian::Config.conduit_uri.path}#{method}"
   end
 
   def connection
-    new_connection = Net::HTTP.new Conduit::Config.conduit_uri.host,
-      Conduit::Config.conduit_uri.port
+    new_connection = Net::HTTP.new Riparian::Config.conduit_uri.host,
+      Riparian::Config.conduit_uri.port
 
     new_connection.use_ssl = true
     new_connection.verify_mode = OpenSSL::SSL::VERIFY_NONE
@@ -48,7 +48,7 @@ class Conduit::Request
     {
       'params'      => data.to_json,
       'output'      => 'json',
-      'host'        => Conduit::Config.host,
+      'host'        => Riparian::Config.host,
       '__conduit__' => true
     }
   end

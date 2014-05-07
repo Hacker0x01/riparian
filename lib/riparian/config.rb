@@ -1,6 +1,6 @@
 require 'uri'
 
-class Conduit::Config
+class Riparian::Config
   def self.conduit_uri
     URI.parse host
   end

@@ -1,11 +1,11 @@
-class Conduit::Session
+class Riparian::Session
   def initialize(connection_id = nil, session_key = nil)
     @connection_id = connection_id
     @session_key   = session_key
   end
 
   def call(method, data = {})
-    Conduit::Request.new(self, method, data).response
+    Riparian::Request.new(self, method, data).response
       .result
   end
 

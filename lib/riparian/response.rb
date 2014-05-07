@@ -1,6 +1,6 @@
 require 'json'
 
-class Conduit::Response
+class Riparian::Response
   def initialize(response)
     @response = JSON.parse response
 
