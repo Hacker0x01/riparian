@@ -6,24 +6,18 @@ module Riparian
       URI.parse host
     end
 
-    def self.conduit_host
-      config['hosts'].first
-    end
-
     def self.host
-      conduit_host[0]
+      @@config[:host]
     end
 
     def self.credentials
-      conduit_host[1]
+      @@config[:credentials]
     end
 
     private
 
     def self.config
-      arcanist_config = File.expand_path '~/.arcrc'
-
-      JSON.parse File.read(arcanist_config)
+      @@config = yield({})
     end
   end
 end
