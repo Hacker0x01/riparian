@@ -4,7 +4,7 @@ class Riparian::Response
   def initialize(response)
     @response = JSON.parse response
 
-    fail(ConduitError, error) unless valid?
+    fail(Riparian::Error, error) unless valid?
 
     @result = @response['result']
   end
@@ -16,6 +16,6 @@ class Riparian::Response
   end
 
   def error
-    "#{response['error_info']} (#{response['error_code']})"
+    "#{@response['error_info']} (#{@response['error_code']})"
   end
 end
