@@ -30,8 +30,6 @@ module Riparian
 
       response = call 'conduit.connect', data
 
-      p response
-
       @connection_id = response['connectionID']
       @session_key   = response['sessionKey']
     end
