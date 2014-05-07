@@ -19,13 +19,13 @@ module Riparian
     def connect
       fail 'Already connected.' if connected?
 
-      certificate = Riparian::Config.credentials['cert']
+      certificate = Riparian::Config.credentials[:cert]
       auth_token  = Time.now.to_i
 
       data = {
         'authToken'     => auth_token,
         'authSignature' => hash(auth_token, certificate),
-        'user'          => Riparian::Config.credentials['user']
+        'user'          => Riparian::Config.credentials[:user]
       }
 
       response = call 'conduit.connect', data
