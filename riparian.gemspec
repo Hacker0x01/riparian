@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Riparian::VERSION
   spec.authors       = ["Michiel Prins"]
   spec.email         = ["michiel3@gmail.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.summary       = %q{Ruby wrapper for Phabricator's Conduit API}
+  spec.description   = %q{Moar... praise Phabricator and stuff!}
   spec.homepage      = ""
   spec.license       = "MIT"
 
