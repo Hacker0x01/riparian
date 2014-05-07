@@ -6,7 +6,7 @@ require 'riparian/error'
 require 'riparian/session'
 require 'riparian/request'
 require 'riparian/response'
-
+require 'riparian/version'
 
 module Riparian
   def self.user_agent
